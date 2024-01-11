@@ -38,4 +38,4 @@ select * from HumanResources.Employee as h where h.JobTitle = 'Sales Representat
 --    IF THE EMPLOYEE DOES NOT HAVE ORDERS SHOULD BE DISPLAYED TOO!!!
 select *  from HumanResources.Employee as hre full join Purchasing.PurchaseOrderHeader as ppoh 
 on hre.BusinessEntityID = ppoh.EmployeeID
-select * from Purchasing.PurchaseOrderHeader
+

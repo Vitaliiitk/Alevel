@@ -1,0 +1,16 @@
+﻿@model MVC.ViewModels.BasketViewModels.IndexViewModel
+
+@{
+    ViewData["Title"] = "Basket";
+}
+
+<h1>Basket test</h1>
+
+@if (!string.IsNullOrEmpty(Model.TextMessage))
+{
+    <p>@Model.TextMessage</p>
+}
+else
+{
+    <p>Something is wrong, here should be a message from Basket.Host -> BasketBffController -> AnonymousLogAnyTestMethod() .</p>
+}

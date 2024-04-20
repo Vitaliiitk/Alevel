@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+
+	@{
+		ViewData["Title"] = "Order";
+	}
+</head>
+<body>
+	@model MVC.ViewModels.OrderViewModels.IndexViewModel
+
+	<div class="container mt-5 mb-5">
+		<div class="d-flex justify-content-center row">
+			<div class="col-md-8">
+				<div class="p-2">
+					<h4>Order</h4>
+				</div>
+				<div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+					<div class="d-flex flex-column align-items-center product-details">
+						<span class="font-weight-bold">Order Number: @Model.SomeNumberOfOrder</span>
+					</div>
+					<div>
+						<h5 class="text-grey">Total price: @Model.TotalPrice USD</h5>
+					</div>
+				</div>
+
+				<div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Name</th>
+								<th scope="col">Amount</th>
+								<th scope="col">Price per unit</th>
+							</tr>
+						</thead>
+						<tbody>
+							@{
+								int counterVariable = 1;  @*I want to use this variable as a counter for "@foreach"*@
+							}
+							@foreach (var product in Model.OrderProducts)
+							{
+
+								<tr>
+									<th scope="row">@counterVariable</th>
+									<td>@product.Name</td>
+									<td>@product.Amount</td>
+									<td>@product.Price</td>
+								</tr>
+								counterVariable++;
+							}
+						</tbody>
+					</table>
+				</div>
+
+				<div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
+					<button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" onclick="navigateToCatalog()">Back to catalog</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function navigateToCatalog() {
+			window.location.href = "@Url.Action("Index", "Catalog")";
+		}
+	</script>
+</body>
+</html>
